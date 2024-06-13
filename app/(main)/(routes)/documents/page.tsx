@@ -39,7 +39,7 @@ const DocumentsPage = () => {
         height="300"
         width="300"
         alt="empty"
-        className="hidden"
+        className="hidden dark:block"
       />
 
       <h2 className="text-lg font-medium">
