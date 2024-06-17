@@ -55,6 +55,7 @@ export const archive = mutation({
   args: {
     id: v.id("documents"),
   },
+
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
@@ -93,7 +94,7 @@ export const archive = mutation({
     const document = await ctx.db.patch(args.id, {
       isArchived: true,
     });
-    
+
     recursiveArchive(args.id);
     return document;
   },
@@ -111,6 +112,7 @@ export const getTrash = query({
       .query("documents")
       .withIndex("by_user", (q) => q.eq("userId", userId))
       .filter((q) => q.eq(q.field("isArchived"), true))
+      .order("desc")
       .collect();
     return documents;
   },
@@ -169,7 +171,6 @@ export const restore = mutation({
     const document = await ctx.db.patch(args.id, options);
 
     recursiveRestore(args.id);
-
     return document;
   },
 });
