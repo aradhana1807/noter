@@ -9,6 +9,7 @@ import {
   AlertDialogFooter,
   AlertDialogCancel,
   AlertDialogAction,
+  AlertDialogHeader,
 } from "../ui/alert-dialog";
 
 interface ConfirmModalProps {
@@ -29,18 +30,26 @@ export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {
       <AlertDialogTrigger onClick={(e) => e.stopPropagation()} asChild>
         {children}
       </AlertDialogTrigger>
-      <AlertDialogContent>Are you sure?
-      <AlertDialogDescription>
-        This action cannot be undone.
-      </AlertDialogDescription>
+      <AlertDialogContent>
+        {/* Header */}
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
 
-      <AlertDialogFooter>
-        <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
-          Cancel
-        </AlertDialogCancel>
+          {/* Description */}
 
-        <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
-      </AlertDialogFooter>
+          <AlertDialogDescription>
+            This action cannot be undone.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+
+        {/* Footer */}
+        <AlertDialogFooter>
+          <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
+            Cancel
+          </AlertDialogCancel>
+
+          <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
+        </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   );
