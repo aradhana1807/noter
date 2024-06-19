@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 const Error = () => {
   return (
-    <div className="h-full flex flex-col items-center justify-center space-y-4">
+    <div className="h-full flex flex-col items-center justify-center space-y-4 dark:bg-[#1f1f1f]">
       <Image
         src="/error.svg"
         height="404"
